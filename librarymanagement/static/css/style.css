@@ -1,0 +1,14 @@
+.bg{
+  background-image: url("../images/books.jpg");
+  background-color: #8E4F28;
+  height: 500 px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  
+}
+.full-height{
+  height: 100%;
+}
