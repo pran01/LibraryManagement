@@ -12,29 +12,86 @@ html,body{
   background-size: cover;
   position: relative;
 }
+
 .block{
-  position: absolute;
-  width: 542px;
-  height: 667px;
-  left: 58px;
-  top: 51px;
+  position: fixed;
+  width: 30%;
+  height: 75%;
+  top: 10%;
+  left: 12.5%;
   background: #8E4F28;
   opacity: 0.65;
   box-shadow: 0px 4px 11px 13px #000000;
   border-radius: 77px;
 }
-  h2{
-    position: absolute;
-  width: 542px;
-  height: 98px;
-  left: -8px;
-  top: 52px;
-  font-family: Salsa;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 72px;
-  line-height: 88px;
-  text-align: center;
-  color: #FFFAEE;
+p{
   
-  }
+position: absolute;
+font-family: Salsa;
+font-style: normal;
+font-weight: normal;
+font-size: 4.5vw;
+left: 30%;
+color: #FFFFFF;
+
+}
+.un{
+  position: absolute;
+  font-family: Salsa;
+font-style: normal;
+font-weight: normal;
+font-size: 2.2vw;
+color: #ffffff;
+left: 4.8%;
+top: 34.7%;
+
+}
+.unb{
+  position: absolute;
+  background-color: #FFFFFF;
+  border-radius: 25px;
+  left: 40%;
+  top: 35%;
+  width: 44%;
+  height: 5.2%;
+
+  
+}
+.pwd{
+  position: absolute;
+  font-family: Salsa;
+font-style: normal;
+font-weight: normal;
+font-size: 2.2vw;
+color: #FFFFFF;
+left: 4.8%;
+top: 52.7%;
+
+}
+.pwdb{
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 25px;
+  left: 40%;
+  top: 53.5%;
+  width: 44%;
+  height: 5.2%;
+
+}
+button{
+  position: absolute;
+  background-color: #8E4F28;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 25px;
+  width: 35%;
+  height: 15%;
+  top: 68%;
+  left: 10.5%;
+  opacity: 100%;
+  position: absolute;
+  font-family: Salsa;
+font-style: normal;
+font-weight: normal;
+font-size: 2.2vw;
+color: #FFFFFF;
+}

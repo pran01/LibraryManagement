@@ -3,7 +3,14 @@
 {% endblock %} {% block body %}
 <div class="bg">
   <div class="block">
-    <h2>Login</h2>
-  </div>
+    <p>Login</p>
+      <form action="" method="POST">
+      <label class="un">Username</label>
+      <input type="text" name="username" class="unb">
+      <label for="pwd" class="pwd">Password</label>
+      <input type="password" class="pwdb">
+      <button>Login</button>
+      </form>
+      
 </div>
 {% endblock %}
