@@ -1,4 +1,4 @@
-from librarymanagement import db
+from librarymanagement import db,login_manager
 from flask_login import UserMixin
 from datetime import datetime
 
@@ -18,11 +18,14 @@ class member(UserMixin,db.Model):
 
 class memberMobile(UserMixin,db.Model):
     __tablename__="membermobile"
-    member_id = db.Column(db.Integer, db.ForeignKey("member.id"), primary_key = True, nullable = False)
+    dummy_column=db.Column(db.Integer,primary_key=True)
+    member_id = db.Column(db.Integer, db.ForeignKey("member.id"), nullable = False)
     mobile = db.Column(db.Integer, unique = True, nullable = False)
 
     def __repr__(self):
         return f"memberMobile('{self.member_id}', '{self.mobile}')"
+
+
 
 class librarian(UserMixin,db.Model):
     __tablename__="librarian"
@@ -32,8 +35,8 @@ class librarian(UserMixin,db.Model):
     password = db.Column(db.String(64), nullable = False)
     address = db.Column(db.Text, nullable = False)
     doj = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
-    shift_from = db.Column(db.DateTime, nullable = False)
-    shift_till = db.Column(db.DateTime, nullable = False)
+    shift_from = db.Column(db.String(4), nullable = False)
+    shift_till = db.Column(db.String(4), nullable = False)
     mobiles = db.relationship("librarianMobile", backref = "librarian", lazy = True)
     librarian_issueInfo  = db.relationship("issueInfo", backref = "librarian",lazy=True) 
 
@@ -42,11 +45,16 @@ class librarian(UserMixin,db.Model):
 
 class librarianMobile(UserMixin,db.Model):
     __tablename__="librarianmobile"
-    lib_id = db.Column(db.Integer, db.ForeignKey("librarian.id"), primary_key=True,nullable = False)
+    dummy_column=db.Column(db.Integer,primary_key=True)
+    lib_id = db.Column(db.Integer, db.ForeignKey("librarian.id"),nullable = False)
     mobile = db.Column(db.Integer, unique = True, nullable = False)
 
     def __repr__(self):
         return f"librarianMobile('{self.lib_id}', '{self.mobile}')"
+
+@login_manager.user_loader
+def load_user(user_id):
+    return librarian.query.get(int(user_id))
 
 class book(UserMixin,db.Model):
     __tablename__="book"
@@ -54,8 +62,8 @@ class book(UserMixin,db.Model):
     name = db.Column(db.String(100), nullable = False)
     publisher = db.Column(db.String(50), nullable = False)
     isbn = db.Column(db.Integer, unique = True, nullable = True) #May be nullable if the book is old
-    genres = db.relationship("bookGenre", backref = "genre", lazy = True)
-    authors = db.relationship("bookAuthor", backref = "author", lazy = True)
+    genres = db.relationship("bookGenre", backref = "book", lazy = True)
+    authors = db.relationship("bookAuthor", backref = "book", lazy = True)
     book_issueInfo  = db.relationship("issueInfo", backref = "book", lazy = True) 
     issueStatus = db.relationship("issuedOrReturned", backref = "book", lazy = True) 
 
@@ -64,7 +72,8 @@ class book(UserMixin,db.Model):
 
 class bookGenre(UserMixin,db.Model):
     __tablename__="bookgenre"
-    book_id = db.Column(db.Integer, db.ForeignKey("book.id"), primary_key=True, nullable = False)
+    dummy_column=db.Column(db.Integer,primary_key=True)
+    book_id = db.Column(db.Integer, db.ForeignKey("book.id"), nullable = False)
     genre = db.Column(db.String(50), nullable = False)
 
     def __repr__(self):
@@ -72,7 +81,8 @@ class bookGenre(UserMixin,db.Model):
 
 class bookAuthor(UserMixin,db.Model):
     __tablename__="bookauthor"
-    book_id = db.Column(db.Integer, db.ForeignKey("book.id"), primary_key=True, nullable = False)
+    dummy_column=db.Column(db.Integer,primary_key=True)
+    book_id = db.Column(db.Integer, db.ForeignKey("book.id"), nullable = False)
     author = db.Column(db.String(50), nullable = False)
 
     def __repr__(self):
@@ -92,13 +102,13 @@ class issueInfo(UserMixin,db.Model):
 
 class issuedOrReturned(UserMixin,db.Model):
     __tablename__="issuedorreturned"
-    issue_id = db.Column(db.Integer, db.ForeignKey("issueinfo.id"), primary_key=True, nullable = False)
-    book_id = db.Column(db.Integer, db.ForeignKey("book.id"), primary_key=True, nullable = False)
+    dummy_column=db.Column(db.Integer,primary_key=True)
+    issue_id = db.Column(db.Integer, db.ForeignKey("issueinfo.id"), nullable = False)
+    book_id = db.Column(db.Integer, db.ForeignKey("book.id"), nullable = False)
     return_date = db.Column(db.DateTime, nullable = False, default = datetime.utcnow) #Check if default is required here
 
     def __repr__(self):
         return f"issuedOrReturned('{self.issue_id}', '{self.book_id}', '{self.return_date}')"
-
 
     
 

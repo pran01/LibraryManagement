@@ -2,14 +2,30 @@
 <title>Login</title>
 {% endblock %} {% block body %}
 <div class="bg">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category,message in messages %}
+  <div class="alert alert-{{ category }}">
+    {{ message }}
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
   <div class="block">
     <p>Login</p>
     <form action="" method="POST">
-      <label class="un">Username</label>
-      <input type="text" name="username" class="unb">
-      <label for="pwd" class="pwd">Password</label>
-      <input type="password" class="pwdb">
-      <button class="loginbtn">Login</button>
+      {{ form.hidden_tag() }}
+      {{ form.email.label(class="un") }}
+      {{ form.email(size=20,class="unb") }}
+      {% for error in form.email.errors %}
+      <span>{{ error }}</span>
+      {% endfor %}
+      {{ form.password.label(class="pwd") }}
+      {{ form.password(class="pwdb") }}
+      {% for error in form.password.errors %}
+      <span>{{ error }}</span>
+      {% endfor %}
+      {{ form.login(class="loginbtn") }}
     </form>
 
   </div>
