@@ -3,17 +3,45 @@
 <title>Home</title>
 {% endblock %}
 {% block body %}
-<div class="bg2">
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 {% for category,message in messages %}
 <div class="alert alert-{{ category }}">
     {{ message }}
 </div>
-
-</div>
 {% endfor %}
 {% endif %}
 {% endwith %}
-<h2>Home</h2>
+<div class="bg2"></div>
+<div>
+    <h2>Issue Details</h2>
+    <form class=isdet>
+        <label for="mid" >MemberID</label>
+        <input type="number" id="midk" name="memberid">
+        <label >Issue Date</label>
+        <input type="date" value="<?php echo $tody; ?>" id="id" name="date">
+        <label>No. of Books</label>
+        <input type="number" id="nb" name="nbi" max="5">
+        <label>BookId</label>
+        <input type="number" id"bkid" name="bookid">
+        <button name="sub" type="submit">+</button>
+    </form>
+    <h2>Return Details</h2>
+    <form>
+        <label>MemberID</label>
+        <input type="number" name="memberid">
+        <label>Date of Return</label>
+        <input type="date" value="<?php echo $tody; ?>" id="id" name="date">
+        <label>No. of Books</label>
+        <input type="number" name="nbi" max="5">
+        <button name="sub" type="submit">+</button>
+    </form>
+    <a href=" " target="_blank">Managed Issues</a>
+    <a href="" target="_blank">Manage Fines</a>
+    <a href="" target="_blank">Searh Books</a>
+    <a href=""  target="_blank">Register Member</a>
+    </div>
+</div>
+
+
 {% endblock %}
