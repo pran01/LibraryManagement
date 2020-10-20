@@ -109,6 +109,3 @@ class issuedOrReturned(UserMixin,db.Model):
 
     def __repr__(self):
         return f"issuedOrReturned('{self.issue_id}', '{self.book_id}', '{self.return_date}')"
-
-    
-

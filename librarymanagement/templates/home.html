@@ -15,32 +15,47 @@
 <div class="bg2"></div>
 <div>
     <h2>Issue Details</h2>
-    <form class=isdet>
-        <label for="mid" >MemberID</label>
+    <form class="isdet issue-info form-group">
+        <label for="mid">MemberID</label>
         <input type="number" id="midk" name="memberid">
-        <label >Issue Date</label>
-        <input type="date" value="<?php echo $tody; ?>" id="id" name="date">
-        <label>No. of Books</label>
-        <input type="number" id="nb" name="nbi" max="5">
-        <label>BookId</label>
-        <input type="number" id"bkid" name="bookid">
-        <button name="sub" type="submit">+</button>
+        <label>Issue Date</label>
+        <input type="date" id="id" name="date">
+        <label for="books">No. of Books</label>
+        <select id="issueBookNo" name="books">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+        </select>
+        <div class="issue-book-id">
+
+        </div>
+        <button name="sub" type="submit">Add Issue Details</button>
     </form>
     <h2>Return Details</h2>
-    <form>
+    <form class="return-info form-group">
         <label>MemberID</label>
         <input type="number" name="memberid">
         <label>Date of Return</label>
-        <input type="date" value="<?php echo $tody; ?>" id="id" name="date">
-        <label>No. of Books</label>
-        <input type="number" name="nbi" max="5">
-        <button name="sub" type="submit">+</button>
+        <input type="date" id="id" name="date">
+        <label for="books">No. of Books</label>
+        <select id="returnBookNo" name="books">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+        </select>
+        <div class="return-book-id">
+
+        </div>
+        <button name="sub" id="returnSubmit" type="submit">Add Return Details</button>
     </form>
     <a href=" " target="_blank">Managed Issues</a>
-    <a href="" target="_blank">Manage Fines</a>
-    <a href="" target="_blank">Searh Books</a>
-    <a href=""  target="_blank">Register Member</a>
-    </div>
+    <a href="" target="_blank">Search Books</a>
+    <a href="" target="_blank">Register Member</a>
+</div>
 </div>
 
 
