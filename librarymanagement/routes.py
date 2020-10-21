@@ -1,5 +1,5 @@
 from librarymanagement import app,login_manager
-from librarymanagement.forms import loginForm
+from librarymanagement.forms import loginForm, issueForm, returnForm
 from flask import render_template,redirect,url_for,flash
 from flask_login import login_required,current_user,login_user,logout_user
 from librarymanagement.models import librarian
@@ -27,7 +27,11 @@ def login():
 @app.route("/home")
 @login_required
 def home():
-    return render_template("home.html")
+    issueF = issueForm()
+    returnF = returnForm()
+
+    return render_template("home.html", issueForm=issueF, returnForm=returnF)
+
 
 
 @app.route("/logout")

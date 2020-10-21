@@ -7,8 +7,7 @@ let returnBookNo=document.querySelector("#returnBookNo");
 issueBookNo.addEventListener("change",(evt)=>{
     issueBookId.innerHTML="";
         for(let i=0;i<evt.target.value;i++){
-            issueBookId.innerHTML+=`<label>Book ID</label>
-            <input type="number" placeholder="For Book ${i+1}" id="issueBookID${i+1}">`
+            issueBookId.innerHTML+=`{{ issueForm.bookId.label }} {{ issueForm.bookId() }}`
         }
 })
 
