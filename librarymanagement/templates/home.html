@@ -14,18 +14,14 @@
 {% endwith %}
 <div class="bg2"></div>
 <div>
+    <h1>Welcome {{ current_user.name }}  <a type="button" class="btn btn-danger btn-sm" href="{{url_for('logout')}}">Logout</a></h1>
     <h2>Issue Details</h2>
-    <!--May need to remove method and action-->
+    
     <form class="isdet issue-info form-group" method="POST" action="">
-        <!--Secret key (Cross site request) Probably to be added on top of this page -->
         {{ issueForm.hidden_tag() }}
-        <!-- Values in parentheses are for bootstrap. Need to be removed ? -->
-        {{ issueForm.memberId.label(class="form-control-label") }}
-        {{ issueForm.memberId(class="form-control form-group-lg issue-memberid")}}
 
-        <!-- May remove the following line
-        {{ issueForm.date.label(class="form-control-label") }}
-        {{ issueForm.date(class="form-control form-group-lg")}} -->
+        {{ issueForm.memberId.label(class="form-control-label issue-memberid-label") }}
+        {{ issueForm.memberId(class="form-control form-group-sm issue-memberid")}}
 
         <label>Number of books</label>
         <select id="issueBookNo">
@@ -41,30 +37,15 @@
         <input class=book-id1></input><br />
         </div>
 
-        <!--<button name="sub" class="issue-submit" type="submit">Add Issue Details</button>-->
-        {{ issueForm.issueDetails(class="btn btn-outline-info submit-issue") }}
+        {{ issueForm.issueDetails(class="btn btn-info submit-issue") }}
     </form>
     <h2>Return Details</h2>
     <form class="return-info form-group">
-        <!--Secret key (Cross site request) Probably to be added on top of this page -->
         {{ returnForm.hidden_tag() }}
-        {{ returnForm.memberId2.label(class="form-control-label") }}
-        {{ returnForm.memberId2(class="form-control form-group-lg")}}
-        <!-- <label>Date of Return</label>
-        <input type="date" id="id" name="date">
-        <label for="books">No. of Books</label>
-        <select id="returnBookNo" name="books">
-            <option value=1>1</option>
-            <option value=2>2</option>
-            <option value=3>3</option>
-            <option value=4>4</option>
-            <option value=5>5</option>
-        </select>
-        <div class="return-book-id">
-
-        </div>
-        <button name="sub" id="returnSubmit" type="submit">Add Return Details</button> -->
-        {{ returnForm.returnDetails(class="btn btn-outline-info") }}
+        {{ returnForm.memberId.label(class="form-control-label return-memberid-label") }}
+        {{ returnForm.memberId(class="form-control form-group-sm return-member-id") }}
+        <br />
+        {{ returnForm.getBookDetails(class="btn btn-info") }}
     </form>
     <a href=" " target="_blank">Managed Issues</a>
     <a href="" target="_blank">Search Books</a>

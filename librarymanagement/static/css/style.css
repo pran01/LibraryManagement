@@ -3,6 +3,7 @@ body {
   height: 100%;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  
 }
 .bg {
   height: 100%;
@@ -85,4 +86,46 @@ p {
   font-weight: normal;
   font-size: 2.2vw;
   color: #ffffff;
+}
+.bgsearch{
+  height: 100%;
+  background-color: #2E190B;
+}
+.searchbox{
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #FFFAEE;
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+}
+.searchbox:hover > .search-num{
+  width: 240px;
+  padding: 0 6px;
+}
+
+.search-btn{
+  color: #2E190B;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #FFFAEE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-num{
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: #2E190B;
+  font-size: 16px;
+  transition: .1s;
+  line-height: 40px;
+  width: 0px;
 }

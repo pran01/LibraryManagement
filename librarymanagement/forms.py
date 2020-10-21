@@ -15,12 +15,11 @@ class issueForm(FlaskForm):
     memberId = IntegerField('MemberId', validators = [DataRequired(message = "Member id can't be empty")])
     #Check for the following line. If it doesn't work, try dropping the () of today
     date = DateTimeField('Date', default = date.today())
-
     #Check the following code. 'Add' instead of 'issue'?
     issueDetails = SubmitField('issue')
 
 class returnForm(FlaskForm):
-    memberId2 = IntegerField('MemberId2', validators = [DataRequired(message = "Member id can't be empty")])
-    returnDetails = SubmitField('return')
+    memberId = IntegerField('MemberId', validators = [DataRequired(message = "Member id can't be empty")])
+    getBookDetails = SubmitField('Get Book Details')
 
     

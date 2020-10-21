@@ -8,7 +8,7 @@ from werkzeug.security import check_password_hash
 
 @app.route("/",methods=["GET","POST"])
 def login():
-    if(current_user.is_authenticated()):
+    if(current_user.is_authenticated):
         return redirect(url_for("home"))
     form=loginForm()
     if form.validate_on_submit():
@@ -30,9 +30,10 @@ def login():
 @login_required
 def home():
     issueF = issueForm()
-    returnF = returnForm()
-    
-    return render_template("home.html", issueForm=issueF, returnForm=returnF)
+    rForm = returnForm()
+    if(rForm.validate_on_submit()):
+        return redirect("home")
+    return render_template("home.html", issueForm=issueF, returnForm=rForm, current_user=current_user)
 
 @app.route("/submit-issue",methods=['POST','GET'])
 @login_required
@@ -41,8 +42,6 @@ def submitIssue():
     print(req)
     res = make_response(jsonify({"message": "JSON received"}), 200)
     return res
-
-
 
 @app.route("/logout")
 @login_required
