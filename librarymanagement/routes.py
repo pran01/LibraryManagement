@@ -38,7 +38,7 @@ def home():
 @login_required
 def submitIssue():
     req=request.get_json()
-    print(req['memberid'])
+    print(req)
     res = make_response(jsonify({"message": "JSON received"}), 200)
     return res
 
