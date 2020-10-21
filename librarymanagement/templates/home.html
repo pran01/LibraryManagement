@@ -13,50 +13,43 @@
 {% endif %}
 {% endwith %}
 <div class="bg2"></div>
-<div class="cont-home">
+<div>
+    <h1>Welcome {{ current_user.name }}  <a type="button" class="btn btn-danger btn-sm" href="{{url_for('logout')}}">Logout</a></h1>
     <h2>Issue Details</h2>
-    <form class="isdet issue-info form-group">
-        <label for="mid">MemberID</label>
-        <input type="number" id="midk" name="mid">
-        <label>Issue Date</label>
-        <input type="date" id="id" name="date">
-        <label for="books">No. of Books</label>
-        <select id="issueBookNo" name="books">
+    
+    <form class="isdet issue-info form-group" method="POST" action="">
+        {{ issueForm.hidden_tag() }}
+
+        {{ issueForm.memberId.label(class="form-control-label issue-memberid-label") }}
+        {{ issueForm.memberId(class="form-control form-group-sm issue-memberid")}}
+
+        <label>Number of books</label>
+        <select id="issueBookNo">
             <option value=1>1</option>
             <option value=2>2</option>
             <option value=3>3</option>
             <option value=4>4</option>
             <option value=5>5</option>
         </select>
-        <div class="issue-book-id">
 
+        <div class="add-book-id">
+            <label>BookId</label>
+        <input class=book-id1></input><br />
         </div>
-        <button name="sub" type="submit">Add Issue Details</button>
+
+        {{ issueForm.issueDetails(class="btn btn-info submit-issue") }}
     </form>
     <h2>Return Details</h2>
     <form class="return-info form-group">
-        <label>MemberID</label>
-        <input type="number" name="memberid">
-        <label>Date of Return</label>
-        <input type="date" id="id" name="date">
-        <label for="books">No. of Books</label>
-        <select id="returnBookNo" name="books">
-            <option value=1>1</option>
-            <option value=2>2</option>
-            <option value=3>3</option>
-            <option value=4>4</option>
-            <option value=5>5</option>
-        </select>
-        <div class="return-book-id">
-
-        </div>
-        <button name="sub" id="returnSubmit" type="submit">Add Return Details</button>
+        {{ returnForm.hidden_tag() }}
+        {{ returnForm.memberId.label(class="form-control-label return-memberid-label") }}
+        {{ returnForm.memberId(class="form-control form-group-sm return-member-id") }}
+        <br />
+        {{ returnForm.getBookDetails(class="btn btn-info") }}
     </form>
     <a href=" " target="_blank">Managed Issues</a>
     <a href="" target="_blank">Search Books</a>
     <a href="" target="_blank">Register Member</a>
 </div>
-</div>
-
 
 {% endblock %}
