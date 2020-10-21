@@ -18,16 +18,15 @@
     <!--May need to remove method and action-->
     <form class="isdet issue-info form-group" method="POST" action="">
         <!--Secret key (Cross site request) Probably to be added on top of this page -->
-        {{ issueForm.hidden_tag() }} 
+        {{ issueForm.hidden_tag() }}
         <!-- Values in parentheses are for bootstrap. Need to be removed ? -->
         {{ issueForm.memberId.label(class="form-control-label") }}
-        {{ issueForm.memberId(class="form-control form-group-lg")}}
+        {{ issueForm.memberId(class="form-control form-group-lg issue-memberid")}}
 
         <!-- May remove the following line
         {{ issueForm.date.label(class="form-control-label") }}
         {{ issueForm.date(class="form-control form-group-lg")}} -->
-        <!-- May need to remove the following line
-        {{ issueForm.bookId.label(class="form-control-label")}} -->
+
         <label>Number of books</label>
         <select id="issueBookNo">
             <option value=1>1</option>
@@ -36,10 +35,14 @@
             <option value=4>4</option>
             <option value=5>5</option>
         </select>
-        <div class="issue-book-id">
+
+        <div class="add-book-id">
+            <label>BookId</label>
+        <input class=book-id1></input><br />
         </div>
+
         <!--<button name="sub" class="issue-submit" type="submit">Add Issue Details</button>-->
-        {{ issueForm.issueDetails(class="btn btn-outline-info") }}
+        {{ issueForm.issueDetails(class="btn btn-outline-info submit-issue") }}
     </form>
     <h2>Return Details</h2>
     <form class="return-info form-group">

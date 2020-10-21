@@ -1,6 +1,6 @@
 from datetime import date
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField, DateTimeField, SelectField, IntegerField
+from wtforms import StringField,PasswordField,SubmitField, DateTimeField, SelectField, IntegerField,FieldList
 from wtforms.validators import DataRequired,Length,Email
 
 class loginForm(FlaskForm):
@@ -15,8 +15,7 @@ class issueForm(FlaskForm):
     memberId = IntegerField('MemberId', validators = [DataRequired(message = "Member id can't be empty")])
     #Check for the following line. If it doesn't work, try dropping the () of today
     date = DateTimeField('Date', default = date.today())
-    #Check the following. Make the ints to strings in choices if any problem.
-    bookId = IntegerField('BookId')
+
     #Check the following code. 'Add' instead of 'issue'?
     issueDetails = SubmitField('issue')
 

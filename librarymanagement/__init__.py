@@ -28,5 +28,8 @@ def hash_user_password(target, value, oldvalue, initiator):
 
 admin.add_view(ModelView(librarian,db.session))
 admin.add_view(ModelView(librarianMobile,db.session))
+admin.add_view(ModelView(book,db.session))
+admin.add_view(ModelView(bookGenre,db.session))
+admin.add_view(ModelView(bookAuthor,db.session))
 
 from librarymanagement import routes
