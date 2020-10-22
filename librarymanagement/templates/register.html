@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block head %}
+<title>Register</title>
+{% endblock %}
+
+{% block body %}
+<h1>Register a member</h1>
+<div class="">
+    <form action="" method="POST" class="form-group m-5">
+        <input placeholder="Enter Name" class="register-name" /><br />
+        <input type="email" placeholder="Enter Email" class="register-email" /><br />
+        <input type="checkbox" class="register-adult" /> Adult<br />
+        <textarea placeholder="Address" class="register-address" ></textarea><br />
+        <input placeholder="Mobile number 1" class="member-mobile-1" />
+        <input placeholder="Mobile number 2" class="member-mobile-2" />
+        <br /><br />
+        <button class="btn btn-success register-member-btn">Register</button>
+    </form>
+</div>
+<script src="../static/js/register.js"></script>
+{% endblock %}

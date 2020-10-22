@@ -50,15 +50,15 @@
         <div class="issued-books">
 
         </div>
-        <button type="button" class="calculate-fine btn btn-info btn-sm">Calculate Fine</button>
+        <button hidden type="button" class="calculate-fine btn btn-info btn-sm">Calculate Fine</button>
         <div class="show-fine">
 
         </div>
-        <button class="submit-return btn btn-primary btn-md">Add Return Details</button>
+        <button hidden class="submit-return btn btn-primary btn-md">Add Return Details</button>
     </form>
-    <a href=" " target="_blank">Managed Issues</a>
-    <a href="" target="_blank">Search Books</a>
-    <a href="" target="_blank">Register Member</a>
+    <a href="">Managed Issues</a>
+    <a href="">Search Books</a>
+    <a href="{{url_for('register')}}">Register Member</a>
 </div>
-
+<script src="../static/js/home.js"></script>
 {% endblock %}
