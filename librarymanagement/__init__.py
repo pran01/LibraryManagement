@@ -33,5 +33,7 @@ admin.add_view(ModelView(bookGenre,db.session))
 admin.add_view(ModelView(bookAuthor,db.session))
 admin.add_view(ModelView(member,db.session))
 admin.add_view(ModelView(memberMobile,db.session))
+admin.add_view(ModelView(issueInfo,db.session))
+admin.add_view(ModelView(issuedOrReturned,db.session))
 
 from librarymanagement import routes

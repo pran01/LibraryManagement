@@ -14,9 +14,10 @@
 {% endwith %}
 <div class="bg2"></div>
 <div>
-    <h1>Welcome {{ current_user.name }}  <a type="button" class="btn btn-danger btn-sm" href="{{url_for('logout')}}">Logout</a></h1>
+    <h1>Welcome {{ current_user.name }} <a type="button" class="btn btn-danger btn-sm"
+            href="{{url_for('logout')}}">Logout</a></h1>
     <h2>Issue Details</h2>
-    
+
     <form class="isdet issue-info form-group" method="POST" action="">
         {{ issueForm.hidden_tag() }}
 
@@ -34,18 +35,26 @@
 
         <div class="add-book-id">
             <label>BookId</label>
-        <input class=book-id1></input><br />
+            <input class=book-id1></input><br />
         </div>
 
         {{ issueForm.issueDetails(class="btn btn-info submit-issue") }}
     </form>
     <h2>Return Details</h2>
-    <form class="return-info form-group">
+    <form class="return-info form-group" method="POST" action="">
         {{ returnForm.hidden_tag() }}
         {{ returnForm.memberId.label(class="form-control-label return-memberid-label") }}
-        {{ returnForm.memberId(class="form-control form-group-sm return-member-id") }}
+        {{ returnForm.memberId(class="form-control form-group-sm return-memberid") }}
         <br />
-        {{ returnForm.getBookDetails(class="btn btn-info") }}
+        <button class="btn btn-info get-book-details" type="button">Get Issued Books</button>
+        <div class="issued-books">
+
+        </div>
+        <button type="button" class="calculate-fine btn btn-info btn-sm">Calculate Fine</button>
+        <div class="show-fine">
+
+        </div>
+        <button type="button" class="submit-return btn btn-primary btn-md">Add Return Details</button>
     </form>
     <a href=" " target="_blank">Managed Issues</a>
     <a href="" target="_blank">Search Books</a>

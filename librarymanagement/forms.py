@@ -20,6 +20,5 @@ class issueForm(FlaskForm):
 
 class returnForm(FlaskForm):
     memberId = IntegerField('MemberId', validators = [DataRequired(message = "Member id can't be empty")])
-    getBookDetails = SubmitField('Get Book Details')
 
     

@@ -62,13 +62,14 @@ class book(UserMixin,db.Model):
     name = db.Column(db.String(100), nullable = False)
     publisher = db.Column(db.String(50), nullable = False)
     isbn = db.Column(db.Integer, unique = True, nullable = True) #May be nullable if the book is old
+    is_issued=db.Column(db.Boolean)
     genres = db.relationship("bookGenre", backref = "book", lazy = True)
     authors = db.relationship("bookAuthor", backref = "book", lazy = True)
     book_issueInfo  = db.relationship("issueInfo", backref = "book", lazy = True) 
     issueStatus = db.relationship("issuedOrReturned", backref = "book", lazy = True) 
 
     def __repr__(self):
-        return f"book('{self.id}', '{self.name}', '{self.publisher}', '{self.isbn}')"
+        return f"book('{self.id}', '{self.name}', '{self.publisher}', '{self.isbn}', '{self.is_issued}')"
 
 class bookGenre(UserMixin,db.Model):
     __tablename__="bookgenre"
