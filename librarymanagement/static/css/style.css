@@ -239,6 +239,9 @@ p {
     position: relative;
     top: 30px;
   }
+  .return-details h4{
+    text-align: center;
+  }
   .return-details{
     position: absolute;
     left: 1000px;
@@ -246,6 +249,8 @@ p {
     width: 500px;
     height: 600px;
     border: #FFFAEE solid 2px;
+    color: #FFFAEE;
+    display: block;
   }
   .return-info label{
     position: relative;
@@ -276,13 +281,16 @@ p {
   .get-book-details{
     background-color: rgba(46, 25, 11, 1);
     color: #FFFAEE;
-    width: 100px;
+    width: auto;
     height: 50px;
-    margin-top: 30px;
-    margin-left: 210px;
+    margin-top: 20px;
+    margin-left: 190px;
     font-size: 13px;
     position: relative;
     top: 35px;
+  }
+  .show-issue{
+    margin-top: 10px;
   }
   .calculate-fine{
     background-color: rgba(46, 25, 11, 1);
@@ -291,17 +299,17 @@ p {
     height: 40px;
     position: relative;
     top: 30px;
-    left: 170px;
+    left: 190px;
   }
 .show-fine{
   color: #FFFAEE;
   font-size: 12px;
   position: relative;
-  left: 190px;
+  left: 10px;
   top: 45px;
 }
 .issued-books{
-  display: grid;
+  display: block;
 }
 .return-btn{
   background-color: rgba(46, 25, 11, 1);
@@ -310,7 +318,7 @@ p {
     height: 40px;
     position: relative;
     top: 40px;
-    left: 180px;
+    left: 190px;
 }
 .bg-reg{
   background-image: url(../images/books2.png);
@@ -396,4 +404,16 @@ left: 0;
   position: relative;
   left: 42%;
   font-size: 10px;
+}
+
+input[type='checkbox'] {
+  -webkit-appearance:none;
+  width:20px;
+  height:20px;
+  background:white;
+  border-radius:5px;
+  border:2px solid #555;
+}
+input[type='checkbox']:checked {
+  background: rgb(91, 123, 187);
 }

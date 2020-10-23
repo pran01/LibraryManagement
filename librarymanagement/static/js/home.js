@@ -54,9 +54,13 @@ getBooksBtn.addEventListener("click", () => {
       return;
     }
     response.json().then(function (data) {
-      issuedBooks.innerHTML =``;
-      for (book of data.bookid)
-        issuedBooks.innerHTML += `<input readonly value="${book.name} (id: ${book.id})" /> <input type="checkbox" name="checkBooks" value=${book.id} /><br />`;
+      issuedBooks.innerHTML = `</br>`;
+      if (data.bookid.length) {
+        for (book of data.bookid)
+          issuedBooks.innerHTML += `<div class="container"><input readonly value="${book.name} (id: ${book.id})" /> <input type="checkbox" name="checkBooks" value=${book.id} /></div><br/>`;
+      }
+      else
+      issuedBooks.innerHTML += `<h4>No Books Issued</h4>`
       calculateFine.removeAttribute("hidden");
     });
   });
@@ -118,4 +122,3 @@ calculateFine.addEventListener("click", () => {
     });
   });
 });
-
