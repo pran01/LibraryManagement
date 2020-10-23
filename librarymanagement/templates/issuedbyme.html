@@ -2,37 +2,28 @@
 {% block head %}
 <title>ISsued by me</title>
 <style>
-      table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    margin: auto;
-  }
-
-  .table-container {
-    width: 100%;
-    align-items: center;
-    align-content: center;
-  }
-
-  td,
-  th {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-    width: auto;
-  }
+      
 </style>
 {% endblock %}
 
 {% block body %}
-<h1>Books issued by Librarian ({{current_user.name}}): </h1><br />
+<div class="bg-issue-by-me">
+  <div class="home-bar">
+    <a href="{{url_for('home')}}">Home</a><br />
+    <a href="{{url_for('showbooks')}}">AvailableBooks</a><br />
+    <a href="{{url_for('register')}}">RegisterMember</a><br />
+    <a type="button" class="lg-btn"
+            href="{{url_for('logout')}}">Logout</a>
+</div>
 <div class="table-container">
-<table>
-    <tr>
+  <h1>Books issued by Librarian ({{current_user.name}}): </h1><br />
+<table class="issue-by-me">
+    <thead><tr class="main-tr">
         <th>Issued to</th>
         <th>Issued Book</th>
         <th>Issued on</th>
     </tr>
+  </thead>
 {% for issue in issues %}
 <tr>
     <td>{{issue.member.name}}</td>
@@ -41,5 +32,6 @@
 </tr>
 {% endfor %}
 </table>
+</div>
 </div>
 {% endblock %}
