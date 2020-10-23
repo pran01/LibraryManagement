@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% block head %}
+<title>ISsued by me</title>
+<style>
+      table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    margin: auto;
+  }
+
+  .table-container {
+    width: 100%;
+    align-items: center;
+    align-content: center;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    width: auto;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+<h1>Books issued by Librarian ({{current_user.name}}): </h1><br />
+<div class="table-container">
+<table>
+    <tr>
+        <th>Issued to</th>
+        <th>Issued Book</th>
+        <th>Issued on</th>
+    </tr>
+{% for issue in issues %}
+<tr>
+    <td>{{issue.member.name}}</td>
+    <td>{{issue.book.name}}</td>
+    <td>{{issue.date}}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% block head %}
+<title>Books</title>
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    margin: auto;
+  }
+
+  .table-container {
+    width: 100%;
+    align-items: center;
+    align-content: center;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    width: auto;
+  }
+  .filter{
+    border: 1px solid black;
+    float: right;
+    height: auto;
+    width: 300px;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="filter">
+<div class="filter-container">
+
+</div>
+<button type="button" class="filter-btn">Filter</button>
+</div>
+
+<div class="table-container">
+  <table class="books-table">
+
+  </table>
+</div>
+
+<script src="../static/js/showbooks.js"></script>
+{% endblock %}
