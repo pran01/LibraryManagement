@@ -85,7 +85,11 @@ def calculatefine():
         issued_year=int(issued_date[0:4])
         issued_month=int(issued_date[5:7])
         issued_day=int(issued_date[8:10])
-        calculated_fine=curr_day-issued_day
+        calculated_fine=0
+        if(curr_day-issued_day>15):
+            calculated_fine=(curr_day-issued_day)*2
+        else:
+            calculated_fine=0
         fine["fine"]+=calculated_fine
     else:
         res = make_response(jsonify(fine), 200)
@@ -137,3 +141,73 @@ def registermember():
             db.session.commit()
     res=make_response(jsonify({"message":"JSON received"}),200)
     return res
+
+@app.route("/show-books",methods=["POST","GET"])
+@login_required
+def showbooks():
+    return render_template("showbooks.html")
+
+@app.route("/show-books/show",methods=["GET"])
+@login_required
+def show():
+    available_json={"books":[],"authors":[],"genres":[]}
+    available_books=book.query.filter_by(is_issued=0).all()
+    for available_book in available_books:
+        bookid=available_book.id
+        bookname=available_book.name
+        bookauthor=bookAuthor.query.filter_by(book_id=bookid).first().author
+        bookgenres=[]
+        genres=bookGenre.query.filter_by(book_id=bookid).all()
+        for genre in genres:
+            bookgenres.append(genre.genre)
+        available_json["books"].append({"id":bookid,"name":bookname,"author":bookauthor,"genres":bookgenres})
+    authors=bookAuthor.query.all()
+    for author in authors:
+        if(author.author not in available_json["authors"]):
+            available_json["authors"].append(author.author)
+    all_genres=bookGenre.query.all()
+    for genre in all_genres:
+        if(genre.genre not in available_json["genres"]):
+            available_json["genres"].append(genre.genre)
+    return jsonify(available_json)
+
+
+@app.route("/filter-books",methods=["POST","GET"])
+@login_required
+def filterbooks():
+    filter_details=request.get_json()
+    filtered_authors=filter_details["authors"]
+    filtered_genres=filter_details["genres"]
+    available_json={"books":[]}
+    available_books=book.query.filter_by(is_issued=0).all()
+    for available_book in available_books:
+        bookid=available_book.id
+        bookname=available_book.name
+        bookauthor=bookAuthor.query.filter_by(book_id=bookid).first().author
+        bookgenres=[]
+        genres=bookGenre.query.filter_by(book_id=bookid).all()
+        for genre in genres:
+            bookgenres.append(genre.genre)
+        if(len(filtered_authors)):
+            if(bookauthor in filtered_authors):
+                if(len(filtered_genres)):
+                    if(len(set(bookgenres)-set(filtered_genres))!=len(set(bookgenres))):
+                        available_json["books"].append({"id":bookid,"name":bookname,"author":bookauthor,"genres":bookgenres})
+                else:
+                    available_json["books"].append({"id":bookid,"name":bookname,"author":bookauthor,"genres":bookgenres})
+        else:
+            if(len(filtered_genres)):
+                if(len(set(bookgenres)-set(filtered_genres))!=len(set(bookgenres))):
+                    available_json["books"].append({"id":bookid,"name":bookname,"author":bookauthor,"genres":bookgenres})
+            else:
+                available_json["books"].append({"id":bookid,"name":bookname,"author":bookauthor,"genres":bookgenres})
+    
+    res=make_response(jsonify(available_json),200)
+    return res
+
+@app.route("/issued-by-me",methods=["POST","GET"])
+@login_required
+def issuedbyme():
+    issues=issueInfo.query.filter_by(lib_id=current_user.id).all()
+    return render_template("issuedbyme.html",current_user=current_user,issues=issues)
+
