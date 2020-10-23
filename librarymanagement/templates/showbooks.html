@@ -9,7 +9,10 @@
   }
 
   .table-container {
-    width: 100%;
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    top: 10%;
     align-items: center;
     align-content: center;
   }
@@ -21,17 +24,45 @@
     padding: 8px;
     width: auto;
   }
+  tr:nth-child(odd) {
+  background-color: #391E0D;
+  color: #FFFAEE;
+  text-align: center;
+}
+tr:nth-child(even) {
+  
+  
+  background-color: #FFFAEE;
+  color: #391E0D;
+  text-align: center;
+}
+
   .filter{
     border: 1px solid black;
     float: right;
-    height: auto;
+    height: 100%;
     width: 300px;
+    overflow: scroll;
   }
+.bg-search-books{
+  background-image: url(../static/images/books2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
 </style>
 {% endblock %}
 
 {% block body %}
-<div class="filter">
+<div class="bg-search-books">
+  <div class="home-bar">
+    <a href="{{url_for('home')}}">Home</a><br />
+    <a href="{{url_for('issuedbyme')}}">Issue By Me</a><br />
+    <a href="{{url_for('register')}}">RegisterMember</a><br />
+    <a type="button" class="lg-btn"
+            href="{{url_for('logout')}}">Logout</a>
+</div>
+  <div class="filter">
 <div class="filter-container">
 
 </div>
@@ -43,6 +74,6 @@
 
   </table>
 </div>
-
+</div>
 <script src="../static/js/showbooks.js"></script>
 {% endblock %}

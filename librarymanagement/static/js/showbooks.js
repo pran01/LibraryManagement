@@ -6,7 +6,7 @@ let response = fetch(`${window.origin}/show-books/show`);
 response.then(function (response) {
     response.json().then(function (data) {
         booksTable.innerHTML=`<tr>
-        <th>id</th>
+        <th>ID</th>
         <th>Name</th>
         <th>Author</th>
         <th>Genres</th>
