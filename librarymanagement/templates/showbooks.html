@@ -16,7 +16,14 @@
     align-items: center;
     align-content: center;
   }
-
+th:nth-child(even){
+  background-color: #FFFAEE;
+  color: #391E0D;
+}
+th:nth-child(odd){
+  background-color: #391E0D;
+  color: #FFFAEE;
+}
   td,
   th {
     border: 1px solid #dddddd;
@@ -24,12 +31,12 @@
     padding: 8px;
     width: auto;
   }
-  tr:nth-child(odd) {
+  td:nth-child(odd) {
   background-color: #391E0D;
   color: #FFFAEE;
   text-align: center;
 }
-tr:nth-child(even) {
+td:nth-child(even) {
   
   
   background-color: #FFFAEE;
@@ -43,12 +50,30 @@ tr:nth-child(even) {
     height: 100%;
     width: 300px;
     overflow: scroll;
+    background-color: rgba(255, 250, 238, 0.5);
+    text-align: center;
+    justify-content: center;
   }
 .bg-search-books{
   background-image: url(../static/images/books2.png);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
+}
+.filter-container{
+  color: #391e0d;
+
+}
+.filter-container h2{
+  background-color: #391E0D;  
+  color: #FFFAEE;
+}
+.filter-btn{
+  background-color: #391E0D;
+  color:#FFFAEE;
+  width: 150px;
+  height:40px;
+  
 }
 </style>
 {% endblock %}
