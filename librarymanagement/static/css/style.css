@@ -385,9 +385,7 @@ left: 0;
   background-color: rgba(46, 25, 11, 0.8);
 }
 .register-adult{
-  position: relative;
-  left: 38%;
-  display: block;
+  flex: left;
   width: 260px;
   margin-top: 15px auto;
   font-size: 14px;
@@ -395,6 +393,11 @@ left: 0;
   padding-bottom: 5px;
   border-bottom: 4px solid rgba(255, 250, 238, 1);
   background-color: rgba(46, 25, 11, 0.8);
+}
+.adult-label{
+  color: #FFFAEE;
+  display: block;
+  text-align: center;
 }
 .register-form button{
   background-color: rgba(46, 25, 11, 1);
