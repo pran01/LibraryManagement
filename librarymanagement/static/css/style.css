@@ -405,6 +405,7 @@ left: 0;
   left: 42%;
   font-size: 10px;
 }
+<<<<<<< HEAD
 
 input[type='checkbox'] {
   -webkit-appearance:none;
@@ -416,4 +417,79 @@ input[type='checkbox'] {
 }
 input[type='checkbox']:checked {
   background: rgb(91, 123, 187);
+=======
+.issue-by-me{
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid  rgba(46, 25, 11, 1);;
+}
+.issue-by-me th, td {
+  padding: 20px;
+}
+.issue-by-me th {
+  letter-spacing: 2px;
+}
+.issue-by-me td {
+  letter-spacing: 1px;
+}
+.issue-by-metbody td {
+  text-align: center;
+}
+
+.issue-by-me tfoot th {
+  text-align: right;
+}
+.table-container{
+  background-image: url(../images/books2.png);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 20.2%;
+}
+.main-tr {
+  background: url(../images/books2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  text-shadow: 1px 1px 1px #FFFAEE;
+  text-align: center;
+}
+.issue-by-me th, tfoot th, tfoot td {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(46, 25, 11,0.5));
+  border: 3px solid #FFFAEE;
+}
+.issue-by-me tbody tr:nth-child(odd) {
+  background-color: #391E0D;;
+  color: #FFFAEE;
+  text-align: center;
+}
+
+.issue-by-me tr:nth-child(even) {
+  
+  
+  background-color: #FFFAEE;;
+  color: #391E0D;
+  text-align: center;
+}
+
+caption {
+  font-family: 'Rock Salt', cursive;
+  padding: 20px;
+  font-style: italic;
+  caption-side: bottom;
+  color: #666;
+  text-align: right;
+  letter-spacing: 1px;
+}
+.table-container h1{
+  color: #FFFAEE;
+}
+.bg-issue-by-me{
+  background-image: url(../images/books2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+>>>>>>> 61229589cc9d77b9fdb17470dc8badc463a8b6ff
 }
