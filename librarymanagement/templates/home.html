@@ -12,7 +12,7 @@
 {% endfor %}
 {% endif %}
 {% endwith %}
-<div class="bg2"></div>
+<div class="bg2">
 <div>
     <h1>Welcome {{ current_user.name }} <a type="button" class="btn btn-danger btn-sm"
             href="{{url_for('logout')}}">Logout</a></h1>
@@ -56,9 +56,11 @@
         </div>
         <button class="submit-return btn btn-primary btn-md">Add Return Details</button>
     </form>
-    <a href=" " target="_blank">Managed Issues</a>
+    <div>
+    <a href=" " target="_blank">Manage Issues</a>
     <a href="" target="_blank">Search Books</a>
     <a href="" target="_blank">Register Member</a>
 </div>
-
+</div>
+</div>
 {% endblock %}
