@@ -2,7 +2,7 @@ from librarymanagement import app,login_manager,db
 from librarymanagement.forms import loginForm, issueForm, returnForm
 from flask import render_template,redirect,url_for,flash,request,jsonify,make_response
 from flask_login import login_required,current_user,login_user,logout_user
-from librarymanagement.models import librarian,issueInfo,member,book,issuedOrReturned
+from librarymanagement.models import *
 from werkzeug.security import check_password_hash
 from datetime import datetime
 
@@ -117,3 +117,23 @@ def logout():
     if current_user.is_authenticated:
         logout_user()
         return redirect(url_for('login'))
+
+@app.route("/register",methods=["POST","GET"])
+@login_required
+def register():
+    return render_template("register.html")
+
+@app.route("/register-member",methods=["POST","GET"])
+@login_required
+def registermember():
+    registerDetails=request.get_json()
+    new_member=member(name=registerDetails["name"],email=registerDetails["email"],address=registerDetails["address"],isAdult=registerDetails["isAdult"])
+    db.session.add(new_member)
+    db.session.commit()
+    if(len(registerDetails["mobile"])):
+        for mobile in registerDetails["mobile"]:
+            mem_mobile=memberMobile(member_id=new_member.id,mobile=mobile)
+            db.session.add(mem_mobile)
+            db.session.commit()
+    res=make_response(jsonify({"message":"JSON received"}),200)
+    return res
