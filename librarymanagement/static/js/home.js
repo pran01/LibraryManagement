@@ -12,8 +12,8 @@ let showFine = document.querySelector(".show-fine");
 issueBookNo.addEventListener("change", (evt) => {
   addedBookIds.innerHTML = "";
   for (let i = 0; i < evt.target.value; i++) {
-    addedBookIds.innerHTML += `<label>BookId</label>
-        <input class=book-id${i + 1}></input><br />`;
+    addedBookIds.innerHTML += `
+        <input class="book-id${i + 1}" placeholder="BookID"></input>`;
   }
 });
 
@@ -54,7 +54,7 @@ getBooksBtn.addEventListener("click", () => {
       return;
     }
     response.json().then(function (data) {
-      issuedBooks.innerHTML = `Member ID: ${data.memberid} <br />`;
+      issuedBooks.innerHTML =``;
       for (book of data.bookid)
         issuedBooks.innerHTML += `<input readonly value="${book.name} (id: ${book.id})" /> <input type="checkbox" name="checkBooks" value=${book.id} /><br />`;
       calculateFine.removeAttribute("hidden");

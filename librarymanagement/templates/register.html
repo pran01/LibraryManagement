@@ -5,8 +5,10 @@
 
 {% block body %}
 <h1>Register a member</h1>
-<div class="bg">
-    <form action="" method="POST" class="form-group m-5">
+<div class="bg-reg">
+    <div class="reg-container">
+        <h2>Register</h2>
+    <form action="" method="POST" class="form-group register-form m-5">
         <input placeholder="Enter Name" class="register-name" /><br />
         <input type="email" placeholder="Enter Email" class="register-email" /><br />
         <input type="checkbox" class="register-adult" /> Adult<br />
@@ -16,6 +18,7 @@
         <br /><br />
         <button class="btn btn-success register-member-btn">Register</button>
     </form>
+</div>
 </div>
 <script src="../static/js/register.js"></script>
 {% endblock %}

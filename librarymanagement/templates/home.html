@@ -14,16 +14,14 @@
 {% endwith %}
 <div class="bg2">
 <div>
-    <h1>Welcome {{ current_user.name }} <a type="button" class="btn btn-danger btn-sm"
-            href="{{url_for('logout')}}">Logout</a></h1>
-    <h2>Issue Details</h2>
-
+    <div class="issue-details">
     <form class="isdet issue-info form-group" method="POST" action="">
+        <h2>Issue Details</h2>
         {{ issueForm.hidden_tag() }}
 
         {{ issueForm.memberId.label(class="form-control-label issue-memberid-label") }}
         {{ issueForm.memberId(class="form-control form-group-sm issue-memberid")}}
-
+        
         <label>Number of books</label>
         <select id="issueBookNo">
             <option value=1>1</option>
@@ -34,31 +32,39 @@
         </select>
 
         <div class="add-book-id">
-            <label>BookId</label>
-            <input class=book-id1></input><br />
+            <input class=book-id1 placeholder="BookID"></input><br />
         </div>
 
-        {{ issueForm.issueDetails(class="btn btn-info submit-issue") }}
+        {{ issueForm.issueDetails(class="submit-issue") }}
     </form>
-    <h2>Return Details</h2>
+</div>
+    <div class="return-details">
     <form class="return-info form-group" method="POST" action="">
+        <h2>Return Details</h2>
         {{ returnForm.hidden_tag() }}
-        {{ returnForm.memberId.label(class="form-control-label return-memberid-label") }}
+       
         {{ returnForm.memberId(class="form-control form-group-sm return-memberid") }}
-        <br />
-        <button class="btn btn-info get-book-details" type="button">Get Issued Books</button>
+    
+        <button class="get-book-details" type="button">Get Issued Books</button>
+        <div class="show-issue">
         <div class="issued-books">
 
         </div>
-        <button hidden type="button" class="calculate-fine btn btn-info btn-sm">Calculate Fine</button>
+    </div>
+        <button hidden type="button" class="calculate-fine">Calculate Fine</button>
         <div class="show-fine">
 
         </div>
-        <button hidden class="submit-return btn btn-primary btn-md">Add Return Details</button>
+        <button hidden class="return-btn submit-return ">Return</button>
     </form>
+</div>
+    <div class="home-bar">
     <a href="{{url_for('issuedbyme')}}">Issued by me</a><br />
-    <a href="{{url_for('showbooks')}}">Available Books</a><br />
-    <a href="{{url_for('register')}}">Register Member</a><br />
+    <a href="{{url_for('showbooks')}}">AvailableBooks</a><br />
+    <a href="{{url_for('register')}}">RegisterMember</a><br />
+    <a type="button" class="lg-btn"
+            href="{{url_for('logout')}}">Logout</a>
+</div>
 </div>
 <script src="../static/js/home.js"></script>
 {% endblock %}
