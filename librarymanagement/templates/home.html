@@ -18,12 +18,10 @@
     <form class="isdet issue-info form-group" method="POST" action="">
         <h2>Issue Details</h2>
         {{ issueForm.hidden_tag() }}
-
-        {{ issueForm.memberId.label(class="form-control-label issue-memberid-label") }}
-        {{ issueForm.memberId(class="form-control form-group-sm issue-memberid")}}
+        {{ issueForm.memberId(class="issue-memberid", placeholder="Member ID")}}
         
-        <label>Number of books</label>
-        <select id="issueBookNo">
+        <label for="issue-book-select">Number of books</label>
+        <select id="issueBookNo" name="issue-book-select">
             <option value=1>1</option>
             <option value=2>2</option>
             <option value=3>3</option>
@@ -43,14 +41,14 @@
         <h2>Return Details</h2>
         {{ returnForm.hidden_tag() }}
        
-        {{ returnForm.memberId(class="form-control form-group-sm return-memberid") }}
+        {{ returnForm.memberId(class="return-memberid") }}
     
-        <button class="get-book-details" type="button">Get Issued Books</button>
+        <button class="get-book-details" type="button">Get Issued Books</button><br/>
         <div class="show-issue">
         <div class="issued-books">
 
         </div>
-    </div>
+        </div>
         <button hidden type="button" class="calculate-fine">Calculate Fine</button>
         <div class="show-fine">
 
